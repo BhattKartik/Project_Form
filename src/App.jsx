@@ -6,6 +6,7 @@ import FormFilling from "./FormFilling"
 import Home from "./Home"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditForm from "./EditForm"
+import ReadAllData from "./ReadAllData"
 function App() {
   
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/post" element={<FormFilling/>}/>
       {/* <Route path="/delete" element={<Form/>}/> */}
       <Route path="/edit/:id" element={<EditForm/>}/>
+      <Route path="/read/:id" element={<ReadAllData/>}/>
 
     </Routes>
     

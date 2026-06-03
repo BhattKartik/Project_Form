@@ -54,7 +54,7 @@ const Home = () => {
                 </Button>
 
               
-                <Button as={Link} to={"/read"} variant="primary" size="sm">
+                <Button as={Link} to={`/read/${item._id}`} variant="primary" size="sm">
                   READ
                 </Button>
 
