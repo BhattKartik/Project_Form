@@ -16,7 +16,7 @@ const FormFilling = () => {
         mobile: ""
     });
 
-    // ✅ Same logic you had — no changes needed
+
     function handleData(event) {
         const { name, value } = event.target
         setFormData({
@@ -25,7 +25,7 @@ const FormFilling = () => {
         })
     }
 
-    // ✅ Same logic — added try/catch and redirect
+    
     async function handleSubmit(event) {
         event.preventDefault();
         try {
