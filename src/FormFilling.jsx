@@ -32,7 +32,7 @@ const FormFilling = () => {
             let response = await axios.post("http://localhost:4000/post", formData)
             console.log(response);
             alert("Data Submitted Successfully!")
-            navigate("/")   // 👈 goes back to home after submit
+            navigate("/")  
         } catch (error) {
             console.error("Submit error:", error)
             alert("Failed to submit!")

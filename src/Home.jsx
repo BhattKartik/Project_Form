@@ -11,7 +11,7 @@ const Home = () => {
       const response = await axios.get("http://localhost:4000/");
       setData(response.data);
     };
-    
+
   useEffect(() => {
    
     fetchData();
@@ -44,7 +44,7 @@ const Home = () => {
               <td className="d-flex gap-2">
 
               
-                <Button as={Link} to={"/edit"} variant="warning" size="sm">
+                <Button as={Link} to={`/edit/${item._id}`} variant="warning" size="sm">
                   EDIT
                 </Button>
 
