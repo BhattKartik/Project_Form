@@ -42,20 +42,21 @@ const Home = () => {
               <td>{item.age}</td>
               <td>{item.mobile}</td>
               <td>
-                <button>
+                
                   <Link to={"/edit"}>EDIT</Link>
                   
-                </button>
+                
                 {"|"}
-                <button onClick={()=>deleteData(item._id)}>
+
+                <button onClick={()=>deleteData(item._id)}>DELETE</button>
                   
-                  DELETE
-                </button>
+                  
+                
                 {"|"}
-                <button>
+                
                   <Link to={"/read"}>READ</Link>
                   
-                </button>
+                
               </td>
             </tr>
           ))}
