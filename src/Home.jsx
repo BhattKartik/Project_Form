@@ -26,6 +26,7 @@ const Home = () => {
 
   return (
     <>
+    <h1>CRUD_Employee_Management_System</h1>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
