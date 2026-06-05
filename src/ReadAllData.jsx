@@ -11,7 +11,7 @@ const ReadOne = () => {
 
   async function fetchData() {
     try {
-      // ✅ add try/catch
+    
       let response = await axios.get(`http://localhost:4000/${id}`);
       console.log(response.data);
       setEmployee(response.data);
