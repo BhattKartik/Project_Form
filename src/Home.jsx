@@ -3,13 +3,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button'; 
+import { Container, Navbar , Nav , Form } from "react-bootstrap";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [search,setSearch] = useState("");
+  const [filterData,setFilterData] = useState([]);
 
    const fetchData = async () => {
       const response = await axios.get("http://localhost:4000/");
       setData(response.data);
+      setFilterData(response.data)
     };
 
   useEffect(() => {
@@ -24,9 +28,47 @@ const Home = () => {
       fetchData();
   }
 
+  function handleSearch(){
+   const result =  data.filter((item)=>{
+      return item.name.toLowerCase().includes(search.toLowerCase())
+    })
+    setFilterData(result)
+
+  }
+
+  function handleClear(){
+    setSearch("")
+    setFilterData(data)
+
+  }
+
   return (
     <>
     <h1>CRUD_Employee_Management_System</h1>
+
+       <Navbar bg="primary" data-bs-theme="dark">
+        <Container className="d-flex justify-content-between align-items-center">
+     
+          <Button as={Link} to={"/post"} variant="success">
+        Form Filling
+      </Button>
+        
+
+              <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              value={search}
+              onChange={(event)=>setSearch(event.target.value)}
+            />
+            <Button variant="dark" onClick={handleSearch}>Search</Button>
+            <Button variant="dark" onClick={handleClear}>Clear</Button>
+          </Form>
+        </Container>
+      </Navbar>
+
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -37,7 +79,7 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {filterData.map((item) => (
             <tr key={item._id}>
               <td>{item.name}</td>
               <td>{item.age}</td>
@@ -62,6 +104,13 @@ const Home = () => {
               </td>
             </tr>
           ))}
+
+
+          {filterData.length === 0 && (
+            <tr>
+              <td colSpan={"4"} className="text-center">No Result Found</td>
+            </tr>
+          )}
         </tbody>
       </Table>
 
