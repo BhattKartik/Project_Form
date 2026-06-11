@@ -29,6 +29,8 @@ const Home = () => {
   }
 
   function handleSearch(){
+    
+    
    const result =  data.filter((item)=>{
       return item.name.toLowerCase().includes(search.toLowerCase())
     })
@@ -44,7 +46,7 @@ const Home = () => {
 
   return (
     <>
-    <h1>CRUD_Employee_Management_System</h1>
+    <h1 className="text-center">CRUD_Employee_Management_System</h1>
 
        <Navbar bg="primary" data-bs-theme="dark">
         <Container className="d-flex justify-content-between align-items-center">
@@ -62,8 +64,14 @@ const Home = () => {
               aria-label="Search"
               value={search}
               onChange={(event)=>setSearch(event.target.value)}
+              onKeyDown={(event)=>{
+                if(event.key === "Enter"){
+                  event.preventDefault()
+                  handleSearch();
+                }
+              }}
             />
-            <Button variant="dark" onClick={handleSearch}>Search</Button>
+            <Button variant="dark" onClick={handleSearch} className="me-2">Search</Button>
             <Button variant="dark" onClick={handleClear}>Clear</Button>
           </Form>
         </Container>
